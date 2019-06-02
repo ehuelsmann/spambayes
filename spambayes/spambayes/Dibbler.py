@@ -327,7 +327,7 @@ class _HTTPHandler(asynchat.async_chat):
     def __init__(self, clientSocket, server, context):
         # Grumble: asynchat.__init__ doesn't take a 'map' argument,
         # hence the two-stage construction.
-        asynchat.async_chat.__init__(self, clientSocket, context._map)
+        asynchat.async_chat.__init__(self, clientSocket)
         self._context = context
         self._server = server
         self._request = ''
@@ -670,7 +670,8 @@ class HTTPPlugin:
         necessary most of the time, but if you're writing "Please wait..."
         before performing a long operation, calling `flush()` is a good
         idea."""
-        return self._handler.flush()
+        return
+        #return self._handler.flush()
 
     def close(self, flush=True):
         """Closes the connection to the browser.  You should call `close()`
