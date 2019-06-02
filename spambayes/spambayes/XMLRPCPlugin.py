@@ -148,6 +148,8 @@ class XMLRPCPlugin(Plugin):
         msg.setId(key)
         corpus.addMessage(msg)
         msg.RememberTrained(is_spam)
+
+        return 0
         #self.stats.RecordTraining(not is_spam)
         #if is_spam:
         #    self.state.bayes.nspam += 1
